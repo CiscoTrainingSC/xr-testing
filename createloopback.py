@@ -1,5 +1,4 @@
 import netmiko
-import napalm
 from netmiko import ConnectHandler
 
 cisco_ios_xr = {
