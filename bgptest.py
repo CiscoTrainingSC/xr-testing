@@ -21,3 +21,4 @@ print(output)
 output = net_connect.send_command('show bgp summary')
 print(output)
 
+print 'Task Done' u"\U0001F37A"
