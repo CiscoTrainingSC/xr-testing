@@ -1,8 +1,8 @@
 # xr-testing
 
 
-xr-testing with napalm
+xr-testing with netmiko
 
 
-- Using Napalm and netmiko to show XR information
-- Using Napalm and netmiko to change XR information
+- Using netmiko to show XR information
+- Using netmiko to change XR information
