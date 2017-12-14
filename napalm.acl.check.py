@@ -19,7 +19,7 @@ device = driver(hostname='10.4.37.16',
 
 
 device.open()
-device.load_merge_candidate(filename='ACL_SAMPLE.cfg')
+device.load_merge_candidate(filename='prefix_list.cfg')
 diffs = device.compare_config()
 
 
