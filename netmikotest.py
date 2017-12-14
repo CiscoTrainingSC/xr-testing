@@ -3,7 +3,7 @@ from netmiko import ConnectHandler
 
 cisco_ios_xr = {
     'device_type': 'cisco_xr',
-    'ip': '10.4.37.17', #ip address of device
+    'ip': '10.4.37.15', #ip address of device
     'username': 'cisco', #username
     'password': 'cisco', #password
     'port': 22, # deafult is 22 #optional, not required
