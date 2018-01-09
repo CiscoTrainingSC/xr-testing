@@ -11,29 +11,31 @@ def merge_device(*msg_list):
     sys.exit(error_msg.rstrip("\n\r"))
 
 def make_changes(device_list):
-    while True:        
-        yes = {'yes','y', 'ye', ''}
-        no = {'no','n'}
-        choice = raw_input('Deploy all devices yes or no [or q to quit]: ').lower()
+    #while True:        
+    yes = {'yes','y', 'ye', ''}
+    no = {'no','n'}
+    choice = raw_input('Deploy all devices yes or no [or q to quit]: ').lower()
         
-        if choice == 'q':
-            print("")
-            print("Exiting...")
-            break
+    if choice == 'q':
+        print
+        print ("Exiting...")
+        sys.exit()
+
         
-        if choice not in yes and no:
-            print("Please respond with 'yes' or 'no' [q to quit]:")
-        
+    if choice not in yes and no:
+        print("Please respond with 'yes' or 'no' [q to quit]:")
+    
+    for device in device_list:
         if choice in yes:
-            print("Applying changes...")
-            for device in device_list:
-                device.commit_config()
-                device.close()
-            
+            print("Applying changes {}...".format(device[1]))
+            #print(dir(device))
+            device[0].commit_config()
+            device[0].close()
+
         elif choice in no:
-            print("Discarding changes...")
-            device.discard_config()
-            device.close()  
+            print("Discarding changes {}...".format(device[1]))
+            device[0].discard_config()
+            device[0].close() 
 
 
 # get command line parameter
@@ -68,13 +70,13 @@ for router in router_list:
     if diffs == "":
         print("Configuration already applied")
         device.discard_config()
-        exit()
+        device.close()
     else:
         print(diffs)
+        device_list.append([device,router])
 
-    device_list.append(device)
-
-make_changes(device_list)
+if len(device_list) > 0:
+    make_changes(device_list)
 
 
 
