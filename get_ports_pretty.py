@@ -6,6 +6,7 @@ from prettytable import PrettyTable
 
 
 
+
 Interface_Errors = PrettyTable(['Interface', 'RX Errors', 'Tx Errors', "MAC Address", "Port Up"])
 Interface_Errors.padding_width = 1
 
@@ -26,7 +27,7 @@ device.open()
 interfaces_counters = device.get_interfaces_counters()
 interfaces = device.get_interfaces()
 
-for int, int_data in interfaces_counters.iteritems():
+for int, int_data in sorted(interfaces_counters.iteritems()):
 	Interface_Errors.add_row([int, int_data["rx_errors"], int_data["tx_errors"],interfaces[int]["mac_address"],interfaces[int]["is_up"]])
 	Interface_Discards.add_row([int, int_data["rx_discards"], int_data["tx_discards"],interfaces[int]["mac_address"],interfaces[int]["is_up"]])
 
