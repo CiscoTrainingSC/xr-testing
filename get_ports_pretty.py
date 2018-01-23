@@ -3,7 +3,7 @@
 #
 from napalm_base import get_network_driver
 from prettytable import PrettyTable
-
+import argparse
 
 
 
@@ -13,10 +13,23 @@ Interface_Errors.padding_width = 1
 Interface_Discards = PrettyTable(['Interface', 'RX Discards', 'Tx Discards', "MAC Address","Port Up"])
 Interface_Discards.padding_width = 1
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-ip", "--router_ip", help="Enter device ip address")
+args = parser.parse_args()
+device_ip = args.router_ip
+
 driver = get_network_driver('iosxr')
-device = driver(hostname='10.4.37.15', username='cisco',
-             password='cisco')
+device = driver(username='cisco',
+                password='cisco',
+                hostname=device_ip)
+
+
+# driver = get_network_driver('iosxr')
+# device = driver(hostname='10.4.37.15', username='cisco',
+#              password='cisco')
 device.open()
+
+
 # print help(device)
 # interfaces_counters = device.get_interfaces_counters()
 # print interfaces_counters
