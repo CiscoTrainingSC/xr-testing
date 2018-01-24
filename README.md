@@ -11,4 +11,6 @@ xr-testing with netmiko / napalm
 - Using Napalm load merge
 - Using Napalm device compare
 - Using Napalm rollback
-
+- Using Napalm with pretty tables for BGP
+- Using Napalm with pretty tables for interface errors
+- Using Napalm with pretty for validating deployments
