@@ -3,6 +3,7 @@
 #
 from napalm_base import get_network_driver
 from prettytable import PrettyTable
+from datetime import datetime
 import argparse
 
 
@@ -40,6 +41,7 @@ device.open()
 interfaces_counters = device.get_interfaces_counters()
 interfaces = device.get_interfaces()
 
+
 for int, int_data in sorted(interfaces_counters.iteritems()):
 	Interface_Errors.add_row([int, int_data["rx_errors"], int_data["tx_errors"],interfaces[int]["mac_address"],interfaces[int]["is_up"]])
 	Interface_Discards.add_row([int, int_data["rx_discards"], int_data["tx_discards"],interfaces[int]["mac_address"],interfaces[int]["is_up"]])
@@ -54,3 +56,4 @@ print "=" * 60
 print Interface_Errors 
 print "=" * 60
 print Interface_Discards 
+print str(datetime.now()) + " Gathered information from {}" .format(device_ip)

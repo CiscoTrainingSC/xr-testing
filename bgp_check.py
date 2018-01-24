@@ -4,6 +4,7 @@
 
 from napalm_base import get_network_driver
 from prettytable import PrettyTable
+from datetime import datetime
 import argparse
 
 
@@ -46,4 +47,5 @@ for ip, bgp_neighbors in sorted(bgp_neighbors.iteritems()):
 # uptime_string = str(timedelta(seconds = uptime_seconds))
 
 print "=" * 60
-print bgp_peering 
+print bgp_peering
+print str(datetime.now()) + " Gathered information from {}" .format(device_ip) 
